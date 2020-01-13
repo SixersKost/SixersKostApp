@@ -29,6 +29,10 @@ public class MenuView extends javax.swing.JFrame {
 
         body_panel = new javax.swing.JPanel();
         menu_panel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         main_panel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -39,15 +43,39 @@ public class MenuView extends javax.swing.JFrame {
         menu_panel.setBackground(new java.awt.Color(21, 87, 79));
         menu_panel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
+        jButton4.setText("jButton4");
+
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
         menu_panel.setLayout(menu_panelLayout);
         menu_panelLayout.setHorizontalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 116, Short.MAX_VALUE)
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         menu_panelLayout.setVerticalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jButton1)
+                .addGap(41, 41, 41)
+                .addComponent(jButton2)
+                .addGap(43, 43, 43)
+                .addComponent(jButton3)
+                .addGap(31, 31, 31)
+                .addComponent(jButton4)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         main_panel.setBackground(new java.awt.Color(21, 87, 79));
@@ -150,6 +178,10 @@ public class MenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body_panel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel main_panel;
     private javax.swing.JPanel menu_panel;
