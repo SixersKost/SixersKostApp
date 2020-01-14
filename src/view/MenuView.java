@@ -5,6 +5,9 @@
  */
 package view;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LENOVO
@@ -16,6 +19,10 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
+        
+        setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        setVisible(true);
+        setResizable(false);
     }
 
     /**
@@ -300,6 +307,11 @@ public class MenuView extends javax.swing.JFrame {
         btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         btnKeluar.setText("LOGOUT");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Brush Script MT", 1, 36)); // NOI18N
@@ -407,6 +419,13 @@ public class MenuView extends javax.swing.JFrame {
         UpdateView update = new UpdateView();
         update.setVisible(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        // TODO add your handling code here:
+        
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this,"Anda Yakin Akan Keluar","Peringatan",dialogBtn);
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
