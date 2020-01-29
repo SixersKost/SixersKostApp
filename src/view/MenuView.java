@@ -25,10 +25,11 @@ public class MenuView extends javax.swing.JFrame {
     Connection conn;
     public String cariPenghuni;
     public String cariKebersihan;
+   
     /**
      * Creates new form MenuView
      */
-    Koneksi k= new Koneksi();
+    Koneksi k = new Koneksi();
     
     public MenuView() {
         initComponents();
@@ -40,6 +41,7 @@ public class MenuView extends javax.swing.JFrame {
         tampilPenghuni();
         judulKebersihan();
         tampilKebersihan();
+      
     }
     
     //membuat method judul untuk mengisi nama masing2x kolom
@@ -50,7 +52,7 @@ public class MenuView extends javax.swing.JFrame {
     }
     
       private void judulKebersihan(){
-        String[] header={"No","No Kamar","Nama","Jenis Kelamin","No Telp"};
+        String[] header={"No","No Kamar","Nama","Jenis Kelamin"};
         model = new DefaultTableModel(header,0);
         tbl_kebersihan.setModel(model);
     }
@@ -63,7 +65,7 @@ public class MenuView extends javax.swing.JFrame {
                 model.removeRow(0);
             }
             
-            conn = k.getKoneksi();
+            conn = k.KoneksiDB();
             rs = conn.createStatement().executeQuery("SELECT * FROM tb_penghuni ");
             int no = 1;
             while(rs.next()){
@@ -87,27 +89,26 @@ public class MenuView extends javax.swing.JFrame {
     
     private void tampilKebersihan(){
         try {
-            int row = tbl_kebersihan.getRowCount();
-            for (int i = 0; i < row; i++) {
-                model.removeRow(0);
+            //
+            int rowK = tbl_kebersihan.getRowCount();
+            for (int i = 0; i < rowK; i++) {
+                model.removeRow(i);
             }
-            
-            conn = k.getKoneksi();
-            rs = conn.createStatement().executeQuery("SELECT no_kamar,nama,jenis_kelamin,no_telp from tb_penghuni join tb_clean using(no_kamar)");
-            int no =1;
-            while (rs.next()) {
-                String nok = rs.getString("no_kamar");
-                String nama = rs.getString("nama");
-                String jk = rs.getString("jenis_kelamin");
-                String not = rs.getString("no_telp");
-                String[] data={Integer.toString(no),nok,nama,jk,not};
-                model.addRow(data);
+            conn=k.KoneksiDB();
+            rs=conn.createStatement().executeQuery("SELECT no_kamar,nama,jenis_kelamin FROM tb_penghuni join tb_clean using(no_kamar)");
+            int no=1;
+            while(rs.next()){
+                String nokK = rs.getString("no_kamar");
+                String namaK= rs.getString("nama");
+                String jkK = rs.getString("jenis_kelamin");
+                String[] barisK = {Integer.toString(no),nokK,namaK,jkK};
+                model.addRow(barisK);
                 no++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }   
     
     private void resetPenghuni(){
         txt_idkamar.setText("");
@@ -121,7 +122,7 @@ public class MenuView extends javax.swing.JFrame {
     }
     
     private void resetKebersihan(){
-        txt_nokamar1.setText("");
+        txt_nokamarK.setText("");
     }
     
     
@@ -166,18 +167,18 @@ public class MenuView extends javax.swing.JFrame {
         txt_pass = new javax.swing.JTextField();
         btn_cariPenghuni = new javax.swing.JButton();
         txt_cariPenghuni = new javax.swing.JTextField();
-        btn_tambah = new javax.swing.JButton();
-        btn_ubah = new javax.swing.JButton();
-        btn_hapus = new javax.swing.JButton();
+        btn_tambahP = new javax.swing.JButton();
+        btn_ubahP = new javax.swing.JButton();
+        btn_hapusP = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_penghuni = new javax.swing.JTable();
         daftarkebersihan_panel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        txt_nokamar1 = new javax.swing.JTextField();
+        txt_nokamarK = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_kebersihan = new javax.swing.JTable();
-        btn_hkebersihan = new javax.swing.JButton();
-        btn_tkebersihan = new javax.swing.JButton();
+        btn_hapusK = new javax.swing.JButton();
+        btn_tambahK = new javax.swing.JButton();
         btn_cariKebersihan = new javax.swing.JButton();
         txt_cariKebersihan = new javax.swing.JTextField();
         tentang_panel = new javax.swing.JPanel();
@@ -322,19 +323,16 @@ public class MenuView extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("ID Kamar");
 
-        txt_idkamar.setBackground(null);
         txt_idkamar.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("No Kamar");
 
-        txt_nokamar.setBackground(null);
         txt_nokamar.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Nama");
 
-        txt_nama.setBackground(null);
         txt_nama.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
@@ -345,28 +343,23 @@ public class MenuView extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Alamat");
 
-        txt_alamat.setBackground(null);
         txt_alamat.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("No Telepon");
 
-        txt_notelp.setBackground(null);
         txt_notelp.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Username");
 
-        txt_user.setBackground(null);
         txt_user.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Password");
 
-        txt_pass.setBackground(null);
         txt_pass.setForeground(new java.awt.Color(0, 0, 0));
 
-        btn_cariPenghuni.setBackground(null);
         btn_cariPenghuni.setForeground(new java.awt.Color(0, 0, 0));
         btn_cariPenghuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         btn_cariPenghuni.addActionListener(new java.awt.event.ActionListener() {
@@ -389,33 +382,30 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
-        btn_tambah.setBackground(null);
-        btn_tambah.setForeground(new java.awt.Color(0, 0, 0));
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (1).png"))); // NOI18N
-        btn_tambah.setText("TAMBAH");
-        btn_tambah.addActionListener(new java.awt.event.ActionListener() {
+        btn_tambahP.setForeground(new java.awt.Color(0, 0, 0));
+        btn_tambahP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (1).png"))); // NOI18N
+        btn_tambahP.setText("TAMBAH");
+        btn_tambahP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tambahActionPerformed(evt);
+                btn_tambahPActionPerformed(evt);
             }
         });
 
-        btn_ubah.setBackground(null);
-        btn_ubah.setForeground(new java.awt.Color(0, 0, 0));
-        btn_ubah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (2).png"))); // NOI18N
-        btn_ubah.setText("UBAH");
-        btn_ubah.addActionListener(new java.awt.event.ActionListener() {
+        btn_ubahP.setForeground(new java.awt.Color(0, 0, 0));
+        btn_ubahP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (2).png"))); // NOI18N
+        btn_ubahP.setText("UBAH");
+        btn_ubahP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ubahActionPerformed(evt);
+                btn_ubahPActionPerformed(evt);
             }
         });
 
-        btn_hapus.setBackground(null);
-        btn_hapus.setForeground(new java.awt.Color(0, 0, 0));
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hapus.png"))); // NOI18N
-        btn_hapus.setText("HAPUS");
-        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+        btn_hapusP.setForeground(new java.awt.Color(0, 0, 0));
+        btn_hapusP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hapus.png"))); // NOI18N
+        btn_hapusP.setText("HAPUS");
+        btn_hapusP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hapusActionPerformed(evt);
+                btn_hapusPActionPerformed(evt);
             }
         });
 
@@ -469,11 +459,11 @@ public class MenuView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_cariPenghuni, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                         .addGap(27, 27, 27)
-                        .addComponent(btn_tambah)
+                        .addComponent(btn_tambahP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_ubah)
+                        .addComponent(btn_ubahP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_hapus)
+                        .addComponent(btn_hapusP)
                         .addGap(8, 8, 8))
                     .addGroup(datapenghuni_panelLayout.createSequentialGroup()
                         .addComponent(jScrollPane2)
@@ -489,12 +479,11 @@ public class MenuView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(datapenghuni_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(datapenghuni_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btn_tambah)
-                                .addComponent(btn_ubah)
-                                .addComponent(btn_hapus))
-                            .addGroup(datapenghuni_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txt_cariPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_cariPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btn_tambahP)
+                                .addComponent(btn_ubahP)
+                                .addComponent(btn_hapusP))
+                            .addComponent(btn_cariPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_cariPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(datapenghuni_panelLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -538,8 +527,8 @@ public class MenuView extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("No Kamar");
 
-        txt_nokamar1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nokamar1.setForeground(new java.awt.Color(0, 0, 0));
+        txt_nokamarK.setBackground(new java.awt.Color(255, 255, 255));
+        txt_nokamarK.setForeground(new java.awt.Color(0, 0, 0));
 
         tbl_kebersihan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -559,23 +548,23 @@ public class MenuView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_kebersihan);
 
-        btn_hkebersihan.setBackground(new java.awt.Color(255, 255, 255));
-        btn_hkebersihan.setForeground(new java.awt.Color(0, 0, 0));
-        btn_hkebersihan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hapus.png"))); // NOI18N
-        btn_hkebersihan.setText("HAPUS");
-        btn_hkebersihan.addActionListener(new java.awt.event.ActionListener() {
+        btn_hapusK.setBackground(new java.awt.Color(255, 255, 255));
+        btn_hapusK.setForeground(new java.awt.Color(0, 0, 0));
+        btn_hapusK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hapus.png"))); // NOI18N
+        btn_hapusK.setText("HAPUS");
+        btn_hapusK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hkebersihanActionPerformed(evt);
+                btn_hapusKActionPerformed(evt);
             }
         });
 
-        btn_tkebersihan.setBackground(new java.awt.Color(255, 255, 255));
-        btn_tkebersihan.setForeground(new java.awt.Color(0, 0, 0));
-        btn_tkebersihan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (1).png"))); // NOI18N
-        btn_tkebersihan.setText("TAMBAH");
-        btn_tkebersihan.addActionListener(new java.awt.event.ActionListener() {
+        btn_tambahK.setBackground(new java.awt.Color(255, 255, 255));
+        btn_tambahK.setForeground(new java.awt.Color(0, 0, 0));
+        btn_tambahK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tambah (1).png"))); // NOI18N
+        btn_tambahK.setText("TAMBAH");
+        btn_tambahK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_tkebersihanActionPerformed(evt);
+                btn_tambahKActionPerformed(evt);
             }
         });
 
@@ -614,17 +603,17 @@ public class MenuView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(daftarkebersihan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_nokamar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                    .addComponent(txt_nokamarK))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(daftarkebersihan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarkebersihan_panelLayout.createSequentialGroup()
                         .addComponent(btn_cariKebersihan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_cariKebersihan)
                         .addGap(186, 186, 186)
-                        .addComponent(btn_tkebersihan)
+                        .addComponent(btn_tambahK)
                         .addGap(28, 28, 28)
-                        .addComponent(btn_hkebersihan))
+                        .addComponent(btn_hapusK))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -636,19 +625,18 @@ public class MenuView extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_nokamar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_nokamarK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(daftarkebersihan_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(daftarkebersihan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(daftarkebersihan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_hkebersihan)
-                        .addComponent(btn_tkebersihan))
-                    .addGroup(daftarkebersihan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_cariKebersihan)
-                        .addComponent(txt_cariKebersihan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                        .addComponent(btn_hapusK)
+                        .addComponent(btn_tambahK))
+                    .addComponent(btn_cariKebersihan)
+                    .addComponent(txt_cariKebersihan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         main_panel.add(daftarkebersihan_panel, "card4");
@@ -826,60 +814,59 @@ public class MenuView extends javax.swing.JFrame {
        main_panel.revalidate();
     }//GEN-LAST:event_btnTentangActionPerformed
 
-    private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
-        // TODO add your handling code here:
-        
+    private void btn_ubahPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahPActionPerformed
         try {
-            
-            conn = k.getKoneksi();
-            String idk =txt_idkamar.getText();
-            String nok =txt_nokamar.getText();
-            String nama =txt_nama.getText();
-            String jk = cmb_jk.getSelectedItem().toString();
-            String alamat = txt_alamat.getText();
-            String not =txt_notelp.getText();
-            String user =txt_user.getText();
-            String pass =txt_pass.getText();
-            conn.createStatement().executeUpdate("UPDATE tb_penghuni SET no_kamar='"+nok+"', nama='"+nama+"',jenis_kelamin='"+jk+"', alamat='"+alamat+"', no_telp='"+not+"', username='"+user+"', password='"+pass+"' WHERE id_kamar='"+idk+"' ");
+            // TODO add your handling code here:
+            conn = k.KoneksiDB();
+            String idkP = txt_idkamar.getText();
+            String nokP = txt_nokamar.getText();
+            String namaP = txt_nama.getText();
+            String jkP = cmb_jk.getSelectedItem().toString();
+            String alamatP = txt_alamat.getText();
+            String notP = txt_notelp.getText();
+            String userP = txt_user.getText();
+            String passP = txt_pass.getText();
+            conn.createStatement().executeUpdate("UPDATE tb_penghuni SET no_kamar='"+nokP+"', nama='"+namaP+"', jenis_kelamin='"+jkP+"', alamat='"+alamatP+"', no_telp='"+notP+"', username='"+userP+"', password='"+passP+"' WHERE id_kamar='"+idkP+"' ");
             tampilPenghuni();
             resetPenghuni();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this," Ubah Data Gagal ");
+            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_ubahActionPerformed
+                
+    }//GEN-LAST:event_btn_ubahPActionPerformed
 
-    private void btn_hkebersihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hkebersihanActionPerformed
-        // TODO add your handling code here:
-         try {
+    private void btn_hapusKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusKActionPerformed
+        try {
             // TODO add your handling code here:
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("DELETE FROM tb_clean where no_kamar='"+txt_nokamar1.getText()+"' ");
+            conn = k.KoneksiDB();
+            conn.createStatement().executeUpdate("DELETE FROM tb_clean WHERE no_kamar='"+txt_nokamarK.getText()+"' ");
             tampilKebersihan();
             resetKebersihan();
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_hkebersihanActionPerformed
+    }//GEN-LAST:event_btn_hapusKActionPerformed
 
-    private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
-        // TODO add your handling code here:
+    private void btn_tambahPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahPActionPerformed
         try {
             // TODO add your handling code here:
-            conn = k.getKoneksi();
-            String nok = txt_nokamar.getText();
-            String nama = txt_nama.getText();
-            String jk = cmb_jk.getSelectedItem().toString();
-            String alamat = txt_alamat.getText();
-            String not = txt_notelp.getText();
-            String user = txt_user.getText();
-            String pass = txt_pass.getText();
-            conn.createStatement().executeUpdate("INSERT INTO tb_penghuni VALUES(id_kamar,'"+nok+"','"+nama+"','"+jk+"','"+alamat+"','"+not+"','"+user+"','"+pass+"')");
+            conn = k.KoneksiDB();
+            String nokP = txt_nokamar.getText();
+            String namaP = txt_nama.getText();
+            String jkP = cmb_jk.getSelectedItem().toString();
+            String alamatP = txt_alamat.getText();
+            String notP = txt_notelp.getText();
+            String userP = txt_user.getText();
+            String passP = txt_pass.getText();
+            conn.createStatement().executeUpdate("INSERT INTO tb_penghuni VALUES(id_kamar,'"+nokP+"','"+namaP+"','"+jkP+"','"+alamatP+"','"+notP+"','"+userP+"','"+passP+"')");
             tampilPenghuni();
             resetPenghuni();
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_tambahActionPerformed
+       
+       
+    }//GEN-LAST:event_btn_tambahPActionPerformed
 
     private void tbl_penghuniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_penghuniMouseClicked
         // TODO add your handling code here:
@@ -895,68 +882,41 @@ public class MenuView extends javax.swing.JFrame {
          txt_pass.setText(model.getValueAt(i, 8).toString());
     }//GEN-LAST:event_tbl_penghuniMouseClicked
 
-    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-        // TODO add your handling code here:
-        
+    private void btn_hapusPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusPActionPerformed
         try {
             // TODO add your handling code here:
-            conn = k.getKoneksi();
+            conn = k.KoneksiDB();
             conn.createStatement().executeUpdate("DELETE FROM tb_penghuni WHERE id_kamar='"+txt_idkamar.getText()+"' ");
             tampilPenghuni();
             resetPenghuni();
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_hapusActionPerformed
+    }//GEN-LAST:event_btn_hapusPActionPerformed
     
-    private void cari_dataPenghuni(){
-        cariPenghuni = txt_cariPenghuni.getText();
+     private void cariDataPenghuni(){
         try {
+            cariPenghuni = txt_cariPenghuni.getText();
             int row = tbl_penghuni.getRowCount();
             for (int i = 0; i < row; i++) {
                 model.removeRow(0);
             }
             
-            conn = k.getKoneksi();
-            rs = conn.createStatement().executeQuery("SELECT * FROM tb_penghuni WHERE no_kamar LIKE '"+cariPenghuni+"' ");
-            int no = 1;
-            while(rs.next()){
-                String idk = rs.getString("id_kamar");
-                String nok = rs.getString("no_kamar");
-                String nama = rs.getString("nama");
-                String jk = rs.getString("jenis_kelamin");
-                String alamat = rs.getString("alamat");
-                String not = rs.getString("no_telp");
-                String user = rs.getString("username");
-                String pass = rs.getString("password");
-                String[] baris ={Integer.toString(no),idk,nok,nama,jk,alamat,not,user,pass};
-                model.addRow(baris);
-                no++;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-     private void cari_dataKebersihan(){
-        cariKebersihan = txt_cariKebersihan.getText();
-        try {
-            int row = tbl_kebersihan.getRowCount();
-            for (int i = 0; i < row; i++) {
-                model.removeRow(0);
-            }
-            
-            conn = k.getKoneksi();
-            rs = conn.createStatement().executeQuery("SELECT no_kamar,nama,jenis_kelamin,no_telp from tb_penghuni join tb_clean using(no_kamar) WHERE no_kamar LIKE '"+cariKebersihan+"' ");
-            int no = 1;
-            while(rs.next()){
-                String nok = rs.getString("no_kamar");
-                String nama = rs.getString("nama");
-                String jk = rs.getString("jenis_kelamin");
-                String not = rs.getString("no_telp");
-                String[] baris ={Integer.toString(no),nok,nama,jk,not};
-                model.addRow(baris);
-                no++;
+            conn = k.KoneksiDB();
+            rs = conn.createStatement().executeQuery("SELECT id_kamar,no_kamar,nama,jenis_kelamin,alamat,no_telp,username,password FROM tb_penghuni WHERE no_kamar ='"+cariPenghuni+"' ");
+            int no =1;
+            while (rs.next()) {
+               String idkP = rs.getString("id_kamar");
+               String nokP = rs.getString("no_kamar");
+               String namaP = rs.getString("nama");
+               String jkP = rs.getString("jenis_kelamin");
+               String alamatP = rs.getString("alamat");
+               String notP = rs.getString("no_telp");
+               String userP = rs.getString("username");
+               String passP = rs.getString("password");
+               String[] baris={Integer.toString(no),idkP,nokP,namaP,jkP,alamatP,notP,userP,passP};
+               model.addRow(baris);
+               no++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
@@ -965,13 +925,13 @@ public class MenuView extends javax.swing.JFrame {
     
     private void btn_cariPenghuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariPenghuniActionPerformed
         // TODO add your handling code here:
-        
-        cariPenghuni = txt_cariPenghuni.getText();  
-        if(cariPenghuni.equals("")){
+        cariPenghuni = txt_cariPenghuni.getText();
+        if (cariPenghuni.equals("")) {
             tampilPenghuni();
-        }else{
-            cari_dataPenghuni();
+        } else {
+            cariDataPenghuni();
         }
+        
     }//GEN-LAST:event_btn_cariPenghuniActionPerformed
 
     private void txt_cariPenghuniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariPenghuniFocusGained
@@ -981,7 +941,8 @@ public class MenuView extends javax.swing.JFrame {
         }
  
     }//GEN-LAST:event_txt_cariPenghuniFocusGained
-
+    
+    
     private void txt_cariPenghuniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariPenghuniFocusLost
         // TODO add your handling code here:
         if (txt_cariPenghuni.getText().equals("")) {
@@ -996,45 +957,41 @@ public class MenuView extends javax.swing.JFrame {
 
     private void txt_cariKebersihanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariKebersihanFocusGained
         // TODO add your handling code here:
-         if (txt_cariPenghuni.getText().equals("Cari Berdasarkan No Kamar")) {
+         if (txt_cariKebersihan.getText().equals("Cari Berdasarkan No Kamar")) {
             txt_cariKebersihan.setText("");
         }
     }//GEN-LAST:event_txt_cariKebersihanFocusGained
 
     private void txt_cariKebersihanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cariKebersihanFocusLost
         // TODO add your handling code here:
-        if (txt_cariPenghuni.getText().equals("")) {
+        if (txt_cariKebersihan.getText().equals("")) {
             txt_cariKebersihan.setText("Cari Berdasarkan No Kamar");
         }
     }//GEN-LAST:event_txt_cariKebersihanFocusLost
     
     //method tambah data di tabel kebersihan
-    private void btn_tkebersihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tkebersihanActionPerformed
-        // TODO add your handling code here:
-        try {
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("INSERT INTO tb_clean VALUES('"+txt_nokamar1.getText()+"')");
+    private void btn_tambahKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahKActionPerformed
+         try {
+            // TODO add your handling code here:
+            conn = k.KoneksiDB();
+            conn.createStatement().executeUpdate("INSERT INTO tb_clean VALUES('"+txt_nokamarK.getText()+"')");
             tampilKebersihan();
             resetKebersihan();
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btn_tkebersihanActionPerformed
+    }//GEN-LAST:event_btn_tambahKActionPerformed
 
     private void tbl_kebersihanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kebersihanMouseClicked
         // TODO add your handling code here:
          int i = tbl_kebersihan.getSelectedRow();
-        txt_nokamar1.setText(model.getValueAt(i, 1).toString());
+        txt_nokamarK.setText(model.getValueAt(i, 1).toString());
     }//GEN-LAST:event_tbl_kebersihanMouseClicked
 
     private void btn_cariKebersihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariKebersihanActionPerformed
         // TODO add your handling code here:
-        cariKebersihan = txt_cariKebersihan.getText();  
-        if(cariKebersihan.equals("")){
-            tampilKebersihan();
-        }else{
-            cari_dataKebersihan();
-        }
+       
+        
     }//GEN-LAST:event_btn_cariKebersihanActionPerformed
 
     /**
@@ -1082,11 +1039,11 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btnTentang;
     private javax.swing.JButton btn_cariKebersihan;
     private javax.swing.JButton btn_cariPenghuni;
-    private javax.swing.JButton btn_hapus;
-    private javax.swing.JButton btn_hkebersihan;
-    private javax.swing.JButton btn_tambah;
-    private javax.swing.JButton btn_tkebersihan;
-    private javax.swing.JButton btn_ubah;
+    private javax.swing.JButton btn_hapusK;
+    private javax.swing.JButton btn_hapusP;
+    private javax.swing.JButton btn_tambahK;
+    private javax.swing.JButton btn_tambahP;
+    private javax.swing.JButton btn_ubahP;
     private javax.swing.JComboBox<String> cmb_jk;
     private javax.swing.JPanel daftarkebersihan_panel;
     private javax.swing.JPanel datapenghuni_panel;
@@ -1120,7 +1077,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idkamar;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_nokamar;
-    private javax.swing.JTextField txt_nokamar1;
+    private javax.swing.JTextField txt_nokamarK;
     private javax.swing.JTextField txt_notelp;
     private javax.swing.JTextField txt_pass;
     private javax.swing.JTextField txt_user;

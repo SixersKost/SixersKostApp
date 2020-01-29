@@ -340,13 +340,13 @@
                               <Group type="102" attributes="0">
                                   <Component id="btn_cariPenghuni" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_cariPenghuni" pref="205" max="32767" attributes="0"/>
+                                  <Component id="txt_cariPenghuni" pref="197" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="btn_tambah" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_tambahP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_ubah" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_ubahP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_hapus" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_hapusP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -367,14 +367,12 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btn_tambah" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btn_ubah" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btn_hapus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_tambahP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_ubahP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_hapusP" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_cariPenghuni" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Component id="btn_cariPenghuni" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="btn_cariPenghuni" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="txt_cariPenghuni" min="-2" pref="33" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -427,9 +425,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_idkamar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -445,9 +440,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nokamar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -463,9 +455,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_nama">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -504,9 +493,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_alamat">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -522,9 +508,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_notelp">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -540,9 +523,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_user">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -558,9 +538,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_pass">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -568,9 +545,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_cariPenghuni">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -601,11 +575,8 @@
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cariPenghuniFocusLost"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_tambah">
+                <Component class="javax.swing.JButton" name="btn_tambahP">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -615,14 +586,11 @@
                     <Property name="text" type="java.lang.String" value="TAMBAH"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tambahActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tambahPActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_ubah">
+                <Component class="javax.swing.JButton" name="btn_ubahP">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -632,14 +600,11 @@
                     <Property name="text" type="java.lang.String" value="UBAH"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ubahActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ubahPActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_hapus">
+                <Component class="javax.swing.JButton" name="btn_hapusP">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color type="null"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
@@ -649,7 +614,7 @@
                     <Property name="text" type="java.lang.String" value="HAPUS"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hapusActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hapusPActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -700,18 +665,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" max="32767" attributes="0"/>
-                              <Component id="txt_nokamar1" max="32767" attributes="0"/>
+                              <Component id="txt_nokamarK" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btn_cariKebersihan" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txt_cariKebersihan" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-                                  <Component id="btn_tkebersihan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_tambahK" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="btn_hkebersihan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_hapusK" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" alignment="1" min="-2" pref="684" max="-2" attributes="0"/>
                           </Group>
@@ -727,7 +692,7 @@
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_nokamar1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_nokamarK" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -737,13 +702,11 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_hkebersihan" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btn_tkebersihan" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_hapusK" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_tambahK" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btn_cariKebersihan" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_cariKebersihan" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btn_cariKebersihan" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_cariKebersihan" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="140" max="32767" attributes="0"/>
                       </Group>
@@ -759,7 +722,7 @@
                     <Property name="text" type="java.lang.String" value="No Kamar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_nokamar1">
+                <Component class="javax.swing.JTextField" name="txt_nokamarK">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -793,7 +756,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="btn_hkebersihan">
+                <Component class="javax.swing.JButton" name="btn_hapusK">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -807,10 +770,10 @@
                     <Property name="text" type="java.lang.String" value="HAPUS"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hkebersihanActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hapusKActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_tkebersihan">
+                <Component class="javax.swing.JButton" name="btn_tambahK">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -824,7 +787,7 @@
                     <Property name="text" type="java.lang.String" value="TAMBAH"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tkebersihanActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tambahKActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_cariKebersihan">
