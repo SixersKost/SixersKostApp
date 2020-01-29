@@ -5,6 +5,10 @@
  */
 package sixerskostapp;
 
+
+import java.sql.SQLException;
+import view.LoginView;
+
 /**
  *
  * @author LENOVO
@@ -14,8 +18,11 @@ public class SixersKostApp {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
+        LoginView LV = new LoginView();
+        LV.setVisible(true);
+    
     }
     
 }
