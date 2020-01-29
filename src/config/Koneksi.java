@@ -17,7 +17,7 @@ public class Koneksi {
     
     private static Connection conn;
     
-    public static Connection getKoneksi() throws SQLException{
+    public static Connection KoneksiDB() throws SQLException{
         if (conn == null) {
           MysqlDataSource dataSource = new MysqlDataSource();
           dataSource.setURL("jdbc:mysql://localhost:3306/sixerskostapp");
