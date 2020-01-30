@@ -33,12 +33,14 @@ public class daftarView extends javax.swing.JFrame {
         tampil();
     }
     
+    //membuat method untuk memberi nama kolom di tabel penghuni
     private void judul(){
         String[] judul={"No","id_kamar","No Kamar","Nama","Jenis Kelamin","Alamat","No Telp","Username","Password"};
         model = new DefaultTableModel(judul,0);
         tbl_kost.setModel(model);
     }
     
+    //membuat method untuk menampilkan record dari database ke tabel penghuni
     private void tampil(){
         
         try {
@@ -69,6 +71,7 @@ public class daftarView extends javax.swing.JFrame {
         
     }
     public String cari;
+    //membuat method untuk menampilkan data yang akan ditampilkan sesuai dengan keinginan
     private void cari_data(){
         cari = txt_cari.getText();
         try {
@@ -99,6 +102,7 @@ public class daftarView extends javax.swing.JFrame {
         
     }
     
+    //membuat method reset
     private void reset(){
         txt_idkamar.setText("");
         txt_nok.setText("");
@@ -145,6 +149,9 @@ public class daftarView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txt_idkamar = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+
+        setTitle("PenghuniView");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -388,9 +395,8 @@ public class daftarView extends javax.swing.JFrame {
                         .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_hapus)
-                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_hapus)
+                    .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_update)
                         .addComponent(btn_simpan)))
@@ -434,7 +440,7 @@ public class daftarView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void tbl_kostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kostMouseClicked
-        // TODO add your handling code here:
+        // mengammbil masing-masing value dari tabel model
         int i = tbl_kost.getSelectedRow();
         txt_idkamar.setText(model.getValueAt(i, 1).toString());
         txt_nok.setText(model.getValueAt(i, 2).toString());
@@ -501,7 +507,7 @@ public class daftarView extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_cariActionPerformed
 
     private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
-        // TODO add your handling code here:
+        
         cari = txt_cari.getText();   
         if(cari.equals("")){
             tampil();
@@ -512,7 +518,6 @@ public class daftarView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cariActionPerformed
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
-        // TODO add your handling code here:
         txt_nok.setText("");
         txt_nama.setText("");
         txt_alamat.setText("");
