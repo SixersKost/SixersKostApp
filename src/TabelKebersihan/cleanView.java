@@ -5,13 +5,11 @@
  */
 package TabelKebersihan;
 
-import TabelPenghuni.daftarView;
+
 import config.Koneksi;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,12 +32,14 @@ public class cleanView extends javax.swing.JFrame {
         tampil();
     }
     
+    //membuat method untuk memasukan nama kolom ke tabel kebersihan
     private void judul(){
         String[] header={"No","No Kamar","Nama","Jenis Kelamin","No Telp"};
         model = new DefaultTableModel(header,0);
         tbl_clean.setModel(model);
     }
     
+    //membuat method untuk menampilkan record di database ke tabel kebersihan
     private void tampil(){
         try {
             int row = tbl_clean.getRowCount();
@@ -60,11 +60,12 @@ public class cleanView extends javax.swing.JFrame {
                 no++;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
     
      public String cari;
+     //membuat method cari untuk menampilkan data sesuai dengan yang diinginkan
     private void cari_data(){
         cari = txt_cariKebersihan.getText();
         try {
@@ -86,7 +87,7 @@ public class cleanView extends javax.swing.JFrame {
                 no++;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         
     }
@@ -109,6 +110,10 @@ public class cleanView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_cariKebersihan = new javax.swing.JButton();
         txt_cariKebersihan = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+
+        setTitle("CleanView");
+        setResizable(false);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -186,6 +191,11 @@ public class cleanView extends javax.swing.JFrame {
         txt_cariKebersihan.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         txt_cariKebersihan.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Cari Berdasarkan No Kamar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,22 +203,27 @@ public class cleanView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_cariKebersihan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_cariKebersihan))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txt_nok)))
+                                .addComponent(btn_cariKebersihan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_cariKebersihan))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_simpan)
-                                .addGap(30, 30, 30)
-                                .addComponent(btn_hapus)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txt_nok)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_simpan)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(btn_hapus)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +248,9 @@ public class cleanView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cariKebersihan)
                     .addComponent(txt_cariKebersihan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(108, 108, 108))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(87, 87, 87))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -254,9 +271,10 @@ public class cleanView extends javax.swing.JFrame {
                     tampil();
                     reset();
                 } catch (SQLException ex) {
-                     Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+                     JOptionPane.showMessageDialog(this, ex.getMessage());
                 }
         } else {
+            //false
         }
         
     }//GEN-LAST:event_btn_simpanActionPerformed
@@ -278,7 +296,7 @@ public class cleanView extends javax.swing.JFrame {
                 tampil();
                 reset();
             } catch (SQLException ex) {
-                Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, ex.getMessage());
             }
         } else {
         }
@@ -286,7 +304,7 @@ public class cleanView extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_hapusActionPerformed
 
     private void btn_cariKebersihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariKebersihanActionPerformed
-        // TODO add your handling code here:
+        
         cari = txt_cariKebersihan.getText();
         if (cari.equals("")) {
             tampil();
@@ -340,6 +358,7 @@ public class cleanView extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_simpan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_clean;
