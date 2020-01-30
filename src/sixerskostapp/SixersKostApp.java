@@ -22,6 +22,7 @@ public class SixersKostApp {
         // TODO code application logic here
         LoginView LV = new LoginView();
         LV.setVisible(true);
+         
     
     }
     
