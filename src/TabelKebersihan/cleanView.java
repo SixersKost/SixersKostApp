@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -242,15 +243,22 @@ public class cleanView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-        try {
-            // TODO add your handling code here:
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("INSERT INTO tb_clean VALUES('"+txt_nok.getText()+"')");
-            tampil();
-            reset();
-        } catch (SQLException ex) {
-            Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this,"Apakah Anda Yakin Ingin MenYimpan ?","Peringatan",dialogBtn);
+        
+        if (dialogResult == 0) {
+            //true
+                 try {
+                    conn = k.getKoneksi();
+                    conn.createStatement().executeUpdate("INSERT INTO tb_clean VALUES('"+txt_nok.getText()+"')");
+                    tampil();
+                    reset();
+                } catch (SQLException ex) {
+                     Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        } else {
         }
+        
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void tbl_cleanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cleanMouseClicked
@@ -260,15 +268,21 @@ public class cleanView extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_cleanMouseClicked
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-        try {
-            // TODO add your handling code here:
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("DELETE FROM tb_clean where no_kamar='"+txt_nok.getText()+"' ");
-            tampil();
-            reset();
-        } catch (SQLException ex) {
-            Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this,"Apakah Anda Yakin Ingin Menghapus ?","Peringatan",dialogBtn);
+        if (dialogResult == 0) {
+            //true
+            try {           
+                conn = k.getKoneksi();
+                conn.createStatement().executeUpdate("DELETE FROM tb_clean where no_kamar='"+txt_nok.getText()+"' ");
+                tampil();
+                reset();
+            } catch (SQLException ex) {
+                Logger.getLogger(cleanView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
         }
+        
     }//GEN-LAST:event_btn_hapusActionPerformed
 
     private void btn_cariKebersihanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariKebersihanActionPerformed
