@@ -25,11 +25,6 @@ public class MenuView extends javax.swing.JFrame {
     
     public MenuView() {
         initComponents();
-        
-        setExtendedState(JFrame.MAXIMIZED_HORIZ);
-        setVisible(true);
-        setResizable(false);
-        
       
     }
        
@@ -56,6 +51,14 @@ public class MenuView extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         tentang_panel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         header_panel = new javax.swing.JPanel();
         btnKeluar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -64,6 +67,7 @@ public class MenuView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1000, 700));
+        setResizable(false);
 
         body_panel.setBackground(new java.awt.Color(21, 87, 79));
 
@@ -71,7 +75,6 @@ public class MenuView extends javax.swing.JFrame {
         menu_panel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
 
         btnBeranda.setBackground(new java.awt.Color(255, 255, 255));
-        btnBeranda.setForeground(new java.awt.Color(0, 0, 0));
         btnBeranda.setText("BERANDA");
         btnBeranda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +83,6 @@ public class MenuView extends javax.swing.JFrame {
         });
 
         btnDaftarPenghuni.setBackground(new java.awt.Color(255, 255, 255));
-        btnDaftarPenghuni.setForeground(new java.awt.Color(0, 0, 0));
         btnDaftarPenghuni.setText("DAFTAR PENGHUNI");
         btnDaftarPenghuni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +91,6 @@ public class MenuView extends javax.swing.JFrame {
         });
 
         btnDaftarKebersihan.setBackground(new java.awt.Color(255, 255, 255));
-        btnDaftarKebersihan.setForeground(new java.awt.Color(0, 0, 0));
         btnDaftarKebersihan.setText("DAFTAR KEBERSIHAN");
         btnDaftarKebersihan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +99,6 @@ public class MenuView extends javax.swing.JFrame {
         });
 
         btnTentang.setBackground(new java.awt.Color(255, 255, 255));
-        btnTentang.setForeground(new java.awt.Color(0, 0, 0));
         btnTentang.setText("TENTANG");
         btnTentang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +173,7 @@ public class MenuView extends javax.swing.JFrame {
                     .addGroup(beranda_panelLayout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jLabel3)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         beranda_panelLayout.setVerticalGroup(
             beranda_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,30 +184,90 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(98, 98, 98)
                 .addComponent(jLabel9)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
 
         main_panel.add(beranda_panel, "card2");
 
+        tentang_panel.setBackground(new java.awt.Color(255, 255, 255));
         tentang_panel.setPreferredSize(new java.awt.Dimension(805, 501));
 
-        jLabel6.setText("abaout");
+        jLabel6.setFont(new java.awt.Font("Bauhaus 93", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel6.setText("Tentang Aplikasi");
+
+        jLabel4.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel4.setText("Aplikasi ini dibuat untuk membantu penjaga kost ");
+
+        jLabel5.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel5.setText("mendata penghuni kost yang akan dibersihkan kamarnya.");
+
+        jLabel10.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel10.setText("Aplikasi Ini Dibuat Oleh SIXER'S TEAM :");
+
+        jLabel11.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel11.setText("Rizki Maulana M. N (10118012)");
+
+        jLabel12.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel12.setText("Surya Fakhriy Hasbi (10118028)");
+
+        jLabel13.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel13.setText("Azis Komara (10118029)");
+
+        jLabel14.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel14.setText("Versi :");
+
+        jLabel15.setFont(new java.awt.Font("Bauhaus 93", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(21, 87, 79));
+        jLabel15.setText("1.1.1");
 
         javax.swing.GroupLayout tentang_panelLayout = new javax.swing.GroupLayout(tentang_panel);
         tentang_panel.setLayout(tentang_panelLayout);
         tentang_panelLayout.setHorizontalGroup(
             tentang_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tentang_panelLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel6)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(tentang_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         tentang_panelLayout.setVerticalGroup(
             tentang_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tentang_panelLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel6)
-                .addContainerGap(428, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addGap(55, 55, 55))
         );
 
         main_panel.add(tentang_panel, "card5");
@@ -267,7 +327,7 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(body_panelLayout.createSequentialGroup()
                 .addComponent(menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE))
+                .addComponent(main_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
             .addComponent(header_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         body_panelLayout.setVerticalGroup(
@@ -364,8 +424,16 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JButton btnTentang;
     private javax.swing.JPanel header_panel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
