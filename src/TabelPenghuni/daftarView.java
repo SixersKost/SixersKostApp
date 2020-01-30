@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -67,7 +68,7 @@ public class daftarView extends javax.swing.JFrame {
         }
         
     }
-    public String cari;;
+    public String cari;
     private void cari_data(){
         cari = txt_cari.getText();
         try {
@@ -317,16 +318,16 @@ public class daftarView extends javax.swing.JFrame {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel8)
                             .addComponent(txt_idkamar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(197, 197, 197)
                                 .addComponent(btn_cari)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel9)
                                 .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -345,10 +346,11 @@ public class daftarView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_cari)
-                            .addComponent(txt_cari)
-                            .addComponent(jLabel9))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btn_cari)
+                                .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -411,15 +413,24 @@ public class daftarView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_simpanActionPerformed
-        try {
-            // TODO add your handling code here:
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("INSERT INTO tb_penghuni VALUES(id_kamar,'"+txt_nok.getText()+"','"+txt_nama.getText()+"','"+cmb_jk.getSelectedItem()+"','"+txt_alamat.getText()+"','"+txt_not.getText()+"','"+txt_user.getText()+"','"+txt_pass.getText()+"')");
-            tampil();
-            reset();
-        } catch (SQLException ex) {
-            Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex);
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this,"Apakah Anda Yakin Ingin Menyimpan?","Peringatan",dialogBtn);
+        
+        if (dialogResult == 0) {
+            //true
+             try {
+                conn = k.getKoneksi();
+                conn.createStatement().executeUpdate("INSERT INTO tb_penghuni VALUES(id_kamar,'"+txt_nok.getText()+"','"+txt_nama.getText()+"','"+cmb_jk.getSelectedItem()+"','"+txt_alamat.getText()+"','"+txt_not.getText()+"','"+txt_user.getText()+"','"+txt_pass.getText()+"')");
+                tampil();
+                reset();
+            } catch (SQLException ex) {
+                Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //false
         }
+        
+       
     }//GEN-LAST:event_btn_simpanActionPerformed
 
     private void tbl_kostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kostMouseClicked
@@ -436,36 +447,53 @@ public class daftarView extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_kostMouseClicked
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
-        try {
-            // TODO add your handling code here:
-            conn = k.getKoneksi();
-            conn.createStatement().executeUpdate("DELETE FROM tb_penghuni WHERE id_kamar= '"+txt_idkamar.getText()+"' ");
-            tampil();
-            reset();
-        } catch (SQLException ex) {
-            Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex);
+       int dialogBtn = JOptionPane.YES_NO_OPTION;
+       int dialogResult = JOptionPane.showConfirmDialog(this,"Apakah Anda Yakin Ingin Menghapus ?","Peringatan",dialogBtn);
+       
+        if (dialogResult == 0) {
+         //true
+            try {
+           
+                conn = k.getKoneksi();
+                conn.createStatement().executeUpdate("DELETE FROM tb_penghuni WHERE id_kamar= '"+txt_idkamar.getText()+"' ");
+                tampil();
+                reset();
+            } catch (SQLException ex) {
+                Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            //false
         }
+        
         
     }//GEN-LAST:event_btn_hapusActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        try {
-            // TODO add your handling code here:
-            conn = k.getKoneksi();
-            String idk =txt_idkamar.getText();
-            String nok =txt_nok.getText();
-            String nama =txt_nama.getText();
-            String jk = cmb_jk.getSelectedItem().toString();
-            String alamat = txt_alamat.getText();
-            String not =txt_not.getText();
-            String user =txt_user.getText();
-            String pass =txt_pass.getText();
-            conn.createStatement().executeUpdate("UPDATE tb_penghuni SET no_kamar='"+nok+"', nama='"+nama+"',jenis_kelamin='"+jk+"', alamat='"+alamat+"', no_telp='"+not+"', username='"+user+"', password='"+pass+"' WHERE id_kamar='"+idk+"' ");
-            tampil();
-            reset();
-        } catch (SQLException ex) {
-            Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex.toString());
+       int dialogBtn = JOptionPane.YES_NO_OPTION;
+       int dialogResult = JOptionPane.showConfirmDialog(this,"Apakah Anda Yakin Ingin Mengubah ?","Peringatan",dialogBtn);
+       
+        if (dialogResult == 0) {
+            //true
+            try {
+                conn = k.getKoneksi();
+                String idk =txt_idkamar.getText();
+                String nok =txt_nok.getText();
+                String nama =txt_nama.getText();
+                String jk = cmb_jk.getSelectedItem().toString();
+                String alamat = txt_alamat.getText();
+                String not =txt_not.getText();
+                String user =txt_user.getText();
+                String pass =txt_pass.getText();
+                conn.createStatement().executeUpdate("UPDATE tb_penghuni SET no_kamar='"+nok+"', nama='"+nama+"',jenis_kelamin='"+jk+"', alamat='"+alamat+"', no_telp='"+not+"', username='"+user+"', password='"+pass+"' WHERE id_kamar='"+idk+"' ");
+                tampil();
+                reset();
+            } catch (SQLException ex) {
+                Logger.getLogger(daftarView.class.getName()).log(Level.SEVERE, null, ex.toString());
+            }
+        } else {
+            //false
         }
+        
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void txt_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cariActionPerformed
