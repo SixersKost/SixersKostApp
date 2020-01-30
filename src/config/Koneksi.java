@@ -7,7 +7,9 @@ package config;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,15 +17,13 @@ import java.sql.SQLException;
  */
 public class Koneksi {
     
-    private static Connection conn;
+    public Connection conn;
     
-    public static Connection KoneksiDB() throws SQLException{
-        if (conn == null) {
-          MysqlDataSource dataSource = new MysqlDataSource();
-          dataSource.setURL("jdbc:mysql://localhost:3306/sixerskostapp");
-          dataSource.setUser("root");
-          dataSource.setPassword("");
-          conn = dataSource.getConnection();
+    public  Connection getKoneksi() throws SQLException{
+        try {
+            conn= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db_kostsixersapp","root","");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         
         return conn;

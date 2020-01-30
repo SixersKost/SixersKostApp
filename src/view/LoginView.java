@@ -5,6 +5,9 @@
  */
 package view;
 
+import ViewUser.MenuViewUser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LENOVO
@@ -107,6 +110,11 @@ public class LoginView extends javax.swing.JFrame {
         btn_login.setText("LOGIN");
         btn_login.setBorder(null);
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
 
         btn_close.setBackground(new java.awt.Color(21, 87, 79));
         btn_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/keluar.png"))); // NOI18N
@@ -232,6 +240,25 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0) ;
     }//GEN-LAST:event_btn_closeActionPerformed
+
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        // TODO add your handling code here:
+        String user = txt_username.getText();
+        String pass = txt_password.getText();
+        
+        if (user.equals("admin") && pass.equals("123")) {
+            this.setVisible(false);
+            MenuView MV = new MenuView();
+            MV.setVisible(true);
+        } else
+        if(user.equals("user") && pass.equals("321")){
+            this.setVisible(false);
+            MenuViewUser MVU = new MenuViewUser();
+            MVU.setVisible(true);
+        }else{
+                JOptionPane.showMessageDialog(null, "Username atau Password Salah, Ulangi Kembali");
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
 
     /**
      * @param args the command line arguments
